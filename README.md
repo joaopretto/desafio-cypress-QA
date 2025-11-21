@@ -76,6 +76,7 @@ npm run cucumber
 ```bash
 npm run cypress:open
 ```
+Após a execução do teste é gerado um relátorio na pasta **"Cypress/report/html/index.html"**
 
 ## Observações
 

@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Then, DataTable } from "@badeball/cypress-cucumber-preprocessor";
 import { ApiClient } from "../../../utils/apiClient";
 import HomePage  from  "../../../pages/HomePage";
 
@@ -31,10 +31,28 @@ When("preencho os campos com o usuario {string} e senha {string}", (username: st
 });
 
 When("clico no botao de confirmar", () => {
-    HomePage.botao();
+    HomePage.botaoConfirmar();
 });
 
 Then("devo ser direcionado para a pagina {string}", (urlEsperada: string) => {
     HomePage.validacaoUrl(urlEsperada);
+});
+
+When("adiciono os produtos abaixo ao carrinho", (datatable: DataTable) => {
+    datatable.hashes().forEach((row) => {
+        const productName = row['nome do produto'];
+        HomePage.selecioneProduto(productName);
+    });
+});
+
+When("clico no carrinho de compras", () => {
+    HomePage.carrinhoDeCompras();
+});
+
+Then("valido se os produtos abaixo foram adicionados no carrinho", (datatable: DataTable) => {
+    datatable.hashes().forEach((row) => {
+        const productName = row['nome do produto'];
+        HomePage.validacaoDeProdutos(productName);
+    });
 });
 

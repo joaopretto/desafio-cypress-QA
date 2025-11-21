@@ -1,0 +1,16 @@
+{
+  "stepDefinitions": [
+    "src/tests/**/*.{js,ts}",
+    "helper/**/*.{js,ts}",
+    "utils/**/*.{js,ts}"
+  ],
+  "json": {
+    "enabled": true,
+    "output": "cypress/reports/json/report.json",
+    "formatter": "cucumber-json-formatter"
+  },
+  "messages": {
+    "enabled": true,
+    "output": "cypress/reports/messages/cucumber-messages.ndjson"
+  }
+}

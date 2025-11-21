@@ -1,0 +1,26 @@
+{
+  "name": "desafio-cypress-qa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "pretest": "npx rimraf cypress/reports",
+    "test:run": "cypress run --spec \"src/tests/**/*.feature\"",
+    "report:generate": "node config/cucumber-report.js",
+    "cucumber": "npm run pretest && npm run test:run & npm run report:generate",
+    "cucumber:visual": "npm run pretest && cypress run --headed --no-exit --spec \"src/tests/**/*.feature\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^23.2.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.7",
+    "cypress": "^15.7.0",
+    "esbuild": "^0.27.0",
+    "multiple-cucumber-html-reporter": "^3.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
